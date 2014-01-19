@@ -25,13 +25,28 @@ set t_Co=256
 if version >= 703
     set colorcolumn=120
 end
+" Character encoding used inside Vim
+" Only available when compiled with the +multi_byte feature
+set encoding=utf-8
+" Character encodings considered when starting to edit an existing file
+" Only available when compiled with the +multi_byte feature
+set fileencodings=utf-8,cp1251
+" Always show tabs
+" set showtabline=2
+" Display invisible characters
 
 " Solarized
+" http://stackoverflow.com/questions/7278267/incorrect-colors-with-vim-in-iterm2-using-solarized#comment11144700_7278548
 call togglebg#map("<F5>")
 syntax enable
-set background=dark
-colorscheme solarized
+set background=light
+let g:solarized_termtrans = 0
 let g:solarized_termcolors=256
+try
+    colorscheme solarized
+catch /^Vim\%((\a\+)\)\=:E185/
+    echo "Solarized theme not found. Run :BundleInstall"
+endtry
 
 " NERDtree
 map <C-n> :NERDTreeToggle<CR>
