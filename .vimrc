@@ -10,8 +10,15 @@ Bundle 'gmarik/vundle'
 
 " Solarized color scheme
 Bundle 'altercation/vim-colors-solarized.git'
+" Quick search plugin
 Bundle 'kien/ctrlp.vim.git'
+Bundle 'git://github.com/ervandew/supertab.git'
+" A tree explorer plugin
 Bundle 'scrooloose/nerdtree.git'
+" Javascript plugins
+Bundle 'pangloss/vim-javascript.git'
+Bundle 'itspriddle/vim-jquery.git'
+Bundle 'walm/jshint.vim.git'
 
 " Editor
 set softtabstop=4
