@@ -8,6 +8,11 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
+" Solarized color scheme
+Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'scrooloose/nerdtree.git'
+
 " Editor
 set softtabstop=4
 set shiftwidth=4
@@ -15,6 +20,22 @@ set tabstop=4
 set expandtab
 set smarttab
 
+set t_Co=256
+
+if version >= 703
+    set colorcolumn=120
+end
+
+" Solarized
+call togglebg#map("<F5>")
+syntax enable
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
+
+" NERDtree
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 filetype plugin indent on     " required!
 "
