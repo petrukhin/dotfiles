@@ -5,7 +5,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " Solarized color scheme
@@ -26,6 +26,8 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 set smarttab
+" Copy indent from current line when starting a new line
+set autoindent
 
 set t_Co=256
 
@@ -38,9 +40,16 @@ set encoding=utf-8
 " Character encodings considered when starting to edit an existing file
 " Only available when compiled with the +multi_byte feature
 set fileencodings=utf-8,cp1251
+
 " Always show tabs
 " set showtabline=2
 " Display invisible characters
+set list
+if version >= 700
+    set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
+else
+    set listchars=tab:»\ ,trail:·,extends:>,precedes:<,nbsp:_
+endif
 
 " Solarized
 " http://stackoverflow.com/questions/7278267/incorrect-colors-with-vim-in-iterm2-using-solarized#comment11144700_7278548
