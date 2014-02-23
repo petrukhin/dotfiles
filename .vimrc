@@ -19,6 +19,10 @@ Bundle 'scrooloose/nerdtree.git'
 Bundle 'pangloss/vim-javascript.git'
 Bundle 'itspriddle/vim-jquery.git'
 Bundle 'walm/jshint.vim.git'
+" Ack search
+Bundle 'mileszs/ack.vim.git'
+" Snipets
+Bundle 'git://github.com/vim-scripts/UltiSnips.git'
 
 " Editor
 set softtabstop=4
@@ -50,12 +54,37 @@ if version >= 700
 else
     set listchars=tab:»\ ,trail:·,extends:>,precedes:<,nbsp:_
 endif
+" Search
+" While typing a search command, show pattern matches as it is typed
+" Only available when compiled with the +extra_search feature
+set incsearch
+" When there is a previous search pattern, highlight all its matches
+" Only available when compiled with the +extra_search feature
+set hlsearch
+" Ignore case in search patterns
+set ignorecase
+" Override the 'ignorecase' if the search pattern contains upper case characters
+set smartcase
+" All matches in a line are substituted instead of one
+set gdefault
+
+set visualbell
+set cursorline
+
+" Splitting a window will put the new window below the current one
+" See :sp
+" Only available when compiled with the +windows feature
+set splitbelow
+" Splitting a window will put the new window right of the current one
+" See :vsp
+" Only available when compiled with the +vertsplit feature
+set splitright
 
 " Solarized
 " http://stackoverflow.com/questions/7278267/incorrect-colors-with-vim-in-iterm2-using-solarized#comment11144700_7278548
 call togglebg#map("<F5>")
 syntax enable
-set background=light
+set background=dark
 let g:solarized_termtrans = 0
 let g:solarized_termcolors=256
 try
@@ -67,6 +96,11 @@ endtry
 " NERDtree
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+
+" ,f
+    " Fast grep
+    " Recursive search in current directory for matches with current word
+    map <Leader>f :execute "Ack " . expand("<cword>") <Bar> cw<CR>
 
 filetype plugin indent on     " required!
 "
